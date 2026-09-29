@@ -12,7 +12,7 @@ public class BackgroundScroller : MonoBehaviour
     {
         backgroundHeight = GetComponent<SpriteRenderer>().bounds.size.y; // Get the height of the background image
 
-        backgroundSpacing = backgroundHeight - overlap;
+        backgroundSpacing = backgroundHeight - overlap; // Calculate the spacing between the two background images
     } // End of start
 
     void Update()
