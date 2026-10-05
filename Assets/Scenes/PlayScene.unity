@@ -1174,7 +1174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bde089ceb0651844876417e54b1e90f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  health: 2
+  health: 1
 --- !u!50 &1733118263
 Rigidbody2D:
   serializedVersion: 5
@@ -1401,7 +1401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bde089ceb0651844876417e54b1e90f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  health: 2
+  health: 1
 --- !u!50 &1896144041
 Rigidbody2D:
   serializedVersion: 5
@@ -1674,7 +1674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bde089ceb0651844876417e54b1e90f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  health: 2
+  health: 1
 --- !u!50 &2123215831
 Rigidbody2D:
   serializedVersion: 5
@@ -1870,6 +1870,10 @@ PrefabInstance:
     - target: {fileID: 2993158113302442752, guid: cc6c8667b866be84f89c3653b6f24982, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5415227167633045544, guid: cc6c8667b866be84f89c3653b6f24982, type: 3}
+      propertyPath: health
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7880808828194187747, guid: cc6c8667b866be84f89c3653b6f24982, type: 3}
       propertyPath: formationPoint
