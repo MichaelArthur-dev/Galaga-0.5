@@ -8,7 +8,7 @@ public class LivesUI : MonoBehaviour
 
     void LateUpdate()
     {
-        if (playerHealth != null || livesImage == null)
+        if (playerHealth == null || livesImage == null)
             return;
         int lives = playerHealth.lives;
         if (lives < 0 || lives >= livesSprites.Length)

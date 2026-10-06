@@ -60,7 +60,7 @@ public class PlayerHealth : MonoBehaviour
             {
                 dead = true;
                 rb.linearVelocity = Vector2.zero;
-                Debug.Log("Player has lost all lives.");
+                GameManager.instance.TriggerGameOver();
                 gameObject.SetActive(false);
                 return true;
             }
