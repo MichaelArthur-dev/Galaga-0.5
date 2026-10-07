@@ -22,6 +22,7 @@ public class PlayerShooting : MonoBehaviour
 
     void Update()
     {
+        if (PausedMenu.InputBlocked) return; // Check if input is blocked by the pause menu
         if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame) // Check for space key press
         {
             Shoot(); // Call the Shoot method when space key is pressed

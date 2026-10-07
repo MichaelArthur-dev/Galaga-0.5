@@ -17,6 +17,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PausedMenu.InputBlocked)
+        {
+            moveDirection = 0f;
+            return;
+        }
         // Reset each frame so releasing the controls stops the ship.
         moveDirection = 0f;
         if (Keyboard.current != null)
