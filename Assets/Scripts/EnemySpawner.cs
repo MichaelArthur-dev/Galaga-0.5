@@ -27,7 +27,6 @@ public class EnemySpawner : MonoBehaviour
     {
         waveNumber++;
         GameManager.instance.SetWave(waveNumber);
-        Debug.Log("Wave: " + waveNumber);
         int gloopCount;
         int strikerCount;
         switch (waveNumber)
