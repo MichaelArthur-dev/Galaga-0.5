@@ -9,8 +9,8 @@ public class PlayerHealth : MonoBehaviour
     public float respawnProtectionTime = 1.5f; // Time during which the player is invulnerable after respawning
     private Rigidbody2D rb;
     private Vector2 startingPosition;
-    private float protectedUntil;
-    private bool dead;
+    private float protectedUntil; // Stores when the players respawn protection ends
+    private bool dead; // Prevents further damage and movement after game over
     public Sprite normalSprite;
     public Sprite slighltyDamagedSprite;
     public Sprite damagedSprite;
@@ -31,10 +31,10 @@ public class PlayerHealth : MonoBehaviour
     {
         if (dead)
         {
-            return;
+            return; 
         }
 
-        if (Time.time < protectedUntil)
+        if (Time.time < protectedUntil) // blinks the player during temporary invulnerability
         {
             float timeRemaining = protectedUntil - Time.time;
             sr.enabled = Mathf.Repeat(timeRemaining, 0.2f) < 0.1f; // Blink effect while protected
@@ -47,7 +47,7 @@ public class PlayerHealth : MonoBehaviour
 
     public bool TryTakeDamage(int amount)
     {
-        if (dead || Time.time < protectedUntil)
+        if (dead || Time.time < protectedUntil) // ignores damage while dead or protected
         {
             return false;
         }
@@ -55,12 +55,12 @@ public class PlayerHealth : MonoBehaviour
         UpdateDamageSprite();
         if (health == 0)
         {
-            lives--;
+            lives--; // Removes a life when all health is lost
             if (lives == 0)
             {
                 dead = true;
                 rb.linearVelocity = Vector2.zero;
-                GameManager.instance.TriggerGameOver();
+                GameManager.instance.TriggerGameOver(); // ends the run when no lives remain
                 gameObject.SetActive(false);
                 return true;
             }
@@ -68,7 +68,8 @@ public class PlayerHealth : MonoBehaviour
             UpdateDamageSprite();
             rb.position = startingPosition;
             rb.linearVelocity = Vector2.zero;
-            protectedUntil = Time.time + respawnProtectionTime;
+            GetComponent<PlayerMovement>().ResetMovement();
+            protectedUntil = Time.time + respawnProtectionTime; // gives temporary protection after respawning
         }
         return true;
     }

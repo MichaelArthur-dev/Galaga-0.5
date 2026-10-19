@@ -11,13 +11,13 @@ public class EnemyMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component
     }   
     
-    void FixedUpdate()
+    void FixedUpdate() // Moves the enemy during the physics update
     {
-        if (formationPoint == null)
+        if (formationPoint == null) // Waits until a formation point has been assigned
         {
             return;
         }
-        Vector2 nextPosition = Vector2.MoveTowards(rb.position, formationPoint.position, moveSpeed * Time.fixedDeltaTime);
+        Vector2 nextPosition = Vector2.MoveTowards(rb.position, formationPoint.position, moveSpeed * Time.fixedDeltaTime); // Moves toward the spot 
         rb.position = nextPosition;
     }
 }

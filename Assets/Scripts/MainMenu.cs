@@ -5,16 +5,16 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("PlayScene");
+        SceneManager.LoadScene("PlayScene"); // Takes you to the play screen
     }
  
     public void QuitGame()
     {
-        Application.Quit();
+        Application.Quit(); // Quits the game 
     }
 
     public void OpenHelp()
     {
-        SceneManager.LoadScene("HelpScene");
+        SceneManager.LoadScene("HelpScene"); // Loads the help page
     }
 }

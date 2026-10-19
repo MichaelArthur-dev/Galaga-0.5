@@ -20,16 +20,15 @@ public class EnemyShooting : MonoBehaviour
 
     void Update()
     {
-        if (movement == null || movement.formationPoint == null)
+        if (movement == null || movement.formationPoint == null) // Stops shooting if the enemy has no movement or formation point set
         {
             return;
         }
-        // wait until the enemy reaches its formation point before starting to shoot
-        if (Vector2.Distance(transform.position, movement.formationPoint.position) > 0.2f)
+        if (Vector2.Distance(transform.position, movement.formationPoint.position) > 0.2f) // wait until the enemy reaches its formation point before starting to shoot
         {
             return;
         }
-        timer += Time.deltaTime;
+        timer += Time.deltaTime; // Counts time between shots
         if (timer >= shootInterval)
         {
            Instantiate(bulletPrefab, firePoint.position, Quaternion.identity); // Instantiate the bullet at the fire point

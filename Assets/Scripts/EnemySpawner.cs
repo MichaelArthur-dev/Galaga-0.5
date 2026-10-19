@@ -11,24 +11,26 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        SpawnWave();
+        SpawnWave(); // Creates the first wave when the scene starts
     }
 
     void Update()
     {
+        if (PausedMenu.InputBlocked) return;
         activeEnemies.RemoveAll(enemy => enemy == null); // Clean up destroyed enemies
         if (activeEnemies.Count == 0)
         {
-            SpawnWave();
+            SpawnWave(); // Starts the next wave when all current enemies are gone
         }
     }
 
     void SpawnWave()
     {
         waveNumber++;
-        GameManager.instance.SetWave(waveNumber);
+        GameManager.instance.SetWave(waveNumber); // Updates the wave number shown by the game manager
         int gloopCount;
         int strikerCount;
+        // Sets the enemy mix for each wave
         switch (waveNumber)
         {
             case 1:
@@ -63,7 +65,7 @@ public class EnemySpawner : MonoBehaviour
                 strikerCount = 4;
                 if (waveNumber >= 10)
                 {
-                    int patternPosition = (waveNumber - 10) % 3;
+                    int patternPosition = (waveNumber - 10) % 3; // Repeats the striker count pattern every three waves
                     if (patternPosition == 1)
                     {
                         strikerCount = 2;
@@ -73,24 +75,24 @@ public class EnemySpawner : MonoBehaviour
                         strikerCount = 3;
                     }
                 }
-                gloopCount = 12 - strikerCount;
+                gloopCount = 12 - strikerCount; // Keeps later waves at 12 enemies total
                 break;
                 }
             int enemyCount = gloopCount + strikerCount;
-            for (int i = 0; i < gloopCount + strikerCount; i++)
+            for (int i = 0; i < gloopCount + strikerCount; i++) // Uses one formation point for each enemy
             {
             Transform point = formationPoints[i];
             GameObject prefabToSpawn = gloopPrefab;
-            if (i >= gloopCount)
+            if (i >= gloopCount) // Uses striker prefabs for the points after the Gloops
             {
                 prefabToSpawn = strikerPrefab;
             }
-            Vector3 spawnPosition = point.position + Vector3.up * spawnHeight;
-            GameObject enemy = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+            Vector3 spawnPosition = point.position + Vector3.up * spawnHeight; // Spawns each enemy slightly above its formation point
+            GameObject enemy = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity); 
 
             EnemyMovement movement = enemy.GetComponent<EnemyMovement>();
-            movement.formationPoint = point;
-            activeEnemies.Add(enemy);
+            movement.formationPoint = point; // Gives the enemy its place in the formation to move back to
+            activeEnemies.Add(enemy); // Tracks the enemy so the next wave waits until it is destroyed
         }
     }
 }
