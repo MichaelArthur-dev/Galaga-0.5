@@ -15,11 +15,13 @@ public class PausedMenu : MonoBehaviour
 
     void Awake()
     {
+        AudioListener.pause = false;
         instance = this;
         pausePanel.SetActive(false);
     }
     public void PauseGame()
     {
+        AudioListener.pause = true;
         if (changingScene) return;
         paused = true;
         Time.timeScale = 0f;
@@ -27,6 +29,7 @@ public class PausedMenu : MonoBehaviour
     }
     public void ResumeGame()
     {
+        AudioListener.pause = false;
         if (changingScene) return;
         resumeFrame = Time.frameCount;
         paused = false;
@@ -80,6 +83,7 @@ public class PausedMenu : MonoBehaviour
     }
     public void QuitToMenu()
     {
+        AudioListener.pause = false;
         if (changingScene) return;
         changingScene = true;
         Time.timeScale = 1f;
