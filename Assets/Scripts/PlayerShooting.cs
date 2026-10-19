@@ -32,7 +32,7 @@ public class PlayerShooting : MonoBehaviour
         
         foreach (Touch finger in Touch.activeTouches) // Iterate through all active touches
         {
-            if (finger.phase == UnityEngine.InputSystem.TouchPhase.Ended && finger.isTap) // Check if the touch has ended and is a tap
+            if (finger.phase == UnityEngine.InputSystem.TouchPhase.Ended && finger.isTap && !PlayerMovement.IsOverUI(finger.screenPosition)) // Triggers when a valid tap ends ensuring the player didnt tap on a UI element
             {
                 Shoot(); // Call the Shoot method when a tap is detected
             }
@@ -49,4 +49,4 @@ public class PlayerShooting : MonoBehaviour
         shootingAudio.PlayOneShot(laserSound); // Play the shooting sound effect
         nextShootTime = Time.time + shootCooldown; // Update the next shoot time based on the cooldown
     }
-}
+} 

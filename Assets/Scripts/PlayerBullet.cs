@@ -11,12 +11,12 @@ public class PlayerBullet : MonoBehaviour
     }
     void Update()
     {
-        transform.Translate(Vector3.up * bulletSpeed * Time.deltaTime);
+        transform.Translate(Vector3.up * bulletSpeed * Time.deltaTime); // Moves upward consistently regardless of frame rate
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Enemy enemy = other.GetComponent<Enemy>();
+        Enemy enemy = other.GetComponent<Enemy>(); // Checks whether the object hit is an enemy
         if (enemy != null)
         {
             enemy.TakeDamage(1); // Deal damage to the enemy
