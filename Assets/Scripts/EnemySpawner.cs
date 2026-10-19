@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
     public Transform[] formationPoints; // Positions in the formation
     public float spawnHeight = 2f; // Spawn distance above each point
     private List<GameObject> activeEnemies = new List<GameObject>(); // Tracks enemies still alive
-    private int waveNumber = 40; // Current wave number
+    private int waveNumber = 0; // Current wave number
 
     void Start()
     {
