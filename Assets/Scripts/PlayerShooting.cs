@@ -9,6 +9,8 @@ public class PlayerShooting : MonoBehaviour
     public Transform firePoint; // Reference to the point from where the bullet will be fired
     public float shootCooldown = 0.25f; // Cooldown time between shots
     private float nextShootTime = 0f; // Time when the player can shoot again
+    public AudioSource shootingAudio; // Reference to the audio source for shooting sound
+    public AudioClip laserSound; // Reference to the laser sound clip
 
     void OnEnable()
     {
@@ -44,6 +46,7 @@ public class PlayerShooting : MonoBehaviour
             return; // If not exit the method without shooting
         }
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation); // Instantiate the bullet prefab at the fire points position and rotation
+        shootingAudio.PlayOneShot(laserSound); // Play the shooting sound effect
         nextShootTime = Time.time + shootCooldown; // Update the next shoot time based on the cooldown
     }
 }

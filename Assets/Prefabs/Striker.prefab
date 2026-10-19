@@ -216,6 +216,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   health: 2
   scoreValue: 25
+  explosionSound: {fileID: 8300000, guid: b8f9eaa731369b241865fa6524f461bc, type: 3}
+  explosionVolume: 0.4
 --- !u!114 &5092837716865501884
 MonoBehaviour:
   m_ObjectHideFlags: 0
